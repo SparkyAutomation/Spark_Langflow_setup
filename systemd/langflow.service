@@ -1,0 +1,15 @@
+[Unit]
+Description=Langflow native service
+After=network.target ollama.service
+Wants=network.target
+
+[Service]
+Type=simple
+User=spark0
+WorkingDirectory=/home/spark0/Documents/Workspace/agent-system/langflow
+ExecStart=/home/spark0/Documents/Workspace/agent-system/langflow/.venv/bin/langflow run --env-file /home/spark0/Documents/Workspace/agent-system/langflow/.env
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
